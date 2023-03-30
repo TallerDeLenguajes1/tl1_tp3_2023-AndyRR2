@@ -15,6 +15,7 @@ for (int i = 0; i < 5; i++)
     printf("%c\n",*names);
     names++;
 }
+free(names);
     return(0);
 }
 
