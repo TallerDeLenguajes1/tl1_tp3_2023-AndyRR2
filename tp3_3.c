@@ -1,29 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-void cargar(char *names);
+#define TAMA 150
+void cargar(int num, char *V[num]);
+void mostrar(int num, char *V[num]);
 
 int main(){
-char *names;
-names=(char*)malloc(5*sizeof(char));
-cargar(names);
-
-for (int i = 0; i < 5; i++)
-{
-    printf("Nombre numero %d: ",i+1);
-    printf("%c\n",*names);
-    names++;
-}
-free(names);
+int num;
+char *V[TAMA];
+printf("Entre el numero de nombres: ");
+scanf("%d",&num);
+fflush(stdin);
+*V=malloc(num*sizeof(char));
+cargar(num,V);
+mostrar(num,V);
+free(*V);
     return(0);
 }
 
-void cargar(char *names){
-    for (int i = 0; i < 5; i++)
+void cargar(int num, char *V[num]){
+for (int i = 0; i < num; i++)
 {
     printf("Entre el nombre numero %d: ",i+1);
-    gets(names);
-    names++;
+    gets(V[i]);
+}
+}
+
+void mostrar(int num, char *V[num]){
+for (int i = 0; i < num; i++)
+{
+    printf("Nombre numero %d: ",i+1);
+    puts(V[i]);
 }
 }
